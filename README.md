@@ -1,6 +1,6 @@
 # VectorCombinations
 
-This is a C++17 demonstration of a method of generating a output set of unique combinations when given an input set of vectors containing arbitrary values.
+This is a C++17 demonstration of a method of generating an output set of unique combinations when given an input set of vectors containing arbitrary values.
 
 ## Example #1: Combinations of integers
 
@@ -434,3 +434,17 @@ Printing 180 vectors numbered 0..179
 179: (alpha, gamma, zeta, phi, psi)
 ===================================================
 ```
+
+# Constraints
+
+All of the input ```vector<T>``` supplied to the function ...
+```
+template<typename T> CVector<T> &combinations(const CVector<T> &v, CVector<T> &dest)
+```
+  ... Must be of length 1 or greater, i.e., the count of the output vector(s) will be zero if any of the input vectors length is zero.
+  
+  Why? Because the the count of the output vectors is the product of the lengths of the input vectors. 
+  This also guards against divide-by-zero exceptions in the ```combinations``` function
+
+# Performance Enhancements
+- I used ```vector<vector<T>>``` here for the ```CVector``` definition: A more optimal execution time might be acheived by using ```vector<shared_ptr<vector<shared_ptr<T>>>``` at the expense of more heap overhead.
